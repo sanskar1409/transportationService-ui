@@ -1,0 +1,47 @@
+<nav class="navbar" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <a class="navbar-brand">Subscribe</a>
+  </div>
+</nav>
+
+<div class="body">
+  <div class="content">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="newSubscription">
+          <h5 class="card-title">ID: {{plan?.id}}</h5>
+          <p class="card-text">Pickup Location: {{plan?.pickupLocation}}</p>
+          <p class="card-text">On-Route Pickup Points: {{plan?.onRoutePickupPoints}}</p>
+          <p class="card-text">Start Time: {{plan?.startTime}}</p>
+          <p class="card-text">Return Time: {{plan?.returnTime}}</p>
+          <p class="card-text">Vehicle No: {{plan?.vehicleNo}}</p>
+          <p class="card-text">Vehicle Type: {{plan?.vehicleType}}</p>
+          <p class="card-text">Driver Phone Number: {{plan?.driverPhoneNumber}}</p>
+          <p class="card-text">Maximum Capacity: {{plan?.maximumCapacity}}</p>
+          <p class="card-text">Current Capacity: {{plan?.currentCapacity}}</p>
+          <p class="card-text">Monthly Fare: {{plan?.monthlyFare}}</p>
+          <div class="mb-2">
+            <label class="col-sm-5 col-form-label">Employee ID :</label>
+            <input type="text" class="form-control" id="inputPassword" formControlName="subscribedByEmployee">
+          </div>
+          <div class="mb-2 row">
+            <label class="col-sm-5 col-form-label">Start Date :</label>
+            <div class="col-sm-7">
+              <input type="date" class="form-control" id="inputPassword" formControlName="subscriptionStartDate">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label class="col-sm-5 col-form-label">End Date :</label>
+            <div class="col-sm-7">
+              <input type="date" class="form-control" id="inputPassword" formControlName="subscriptionEndDate">
+            </div>
+          </div>
+          <div style="display: flex;justify-content: space-around;">
+            <button class="btn btn-outline-danger" [routerLink]="['/']">Back</button>
+            <button class="btn btn-outline-success" (click)="subscribe()">Subscribe</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

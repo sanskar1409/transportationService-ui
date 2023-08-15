@@ -1,0 +1,47 @@
+<nav class="navbar" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <a class="navbar-brand">My Subscription List</a>
+    <form class="d-flex" style="margin-left: -11.5%;" role="search">
+      <input class="form-control me-2" #searchInput type="search" placeholder="Enter subscription Id"
+        aria-label="Search">
+      <button class="btn btn-outline-success" type="submit"
+        (click)="getSubscriptionList(searchInput.value)">Search</button>
+    </form>
+    <button class="btn btn-outline-success d-flex" [routerLink]="['/']">Home</button>
+  </div>
+</nav>
+
+<div class="body" *ngIf="!subscriptions">
+  <div class="content">
+    <p>Please enter subscription Id to get available subscriptions list,</p>
+    <p>to subscribe new plan, <a style="cursor: pointer;color: blue;" [routerLink]="['/']">click
+        here</a>.</p>
+  </div>
+</div>
+
+
+<div *ngIf="subscriptions">
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Subscription ID</th>
+        <th scope="col">Employee ID</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Status</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">{{subscriptions?.id}}</th>
+        <td>{{subscriptions?.subscribedByEmployee}}</td>
+        <td>{{subscriptions?.subscriptionStartDate}}</td>
+        <td>{{subscriptions?.subscriptionEndDate}}</td>
+        <td>{{subscriptions?.subscriptionStatus}}</td>
+        <td><button class="btn btn-outline-danger btn-sm" (click)="cancelSubscription(subscriptions.id)"
+            [disabled]="subscriptions?.subscriptionStatus == 'Cancelled'">Unsubscriibe</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

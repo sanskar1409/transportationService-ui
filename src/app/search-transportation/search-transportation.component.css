@@ -1,0 +1,12 @@
+.body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* height: 89vh; */
+}
+
+.content {
+  text-align: center;
+  padding: 20px;
+  border-radius: 4px
+}

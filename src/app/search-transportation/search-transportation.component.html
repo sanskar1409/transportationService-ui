@@ -1,0 +1,67 @@
+<nav class="navbar" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <a class="navbar-brand">Transportation Service</a>
+    <form class="d-flex" style="margin-left: -17%;" role="search">
+      <input class="form-control me-2" #searchInput type="search" placeholder="Enter pick-up location"
+        aria-label="Search">
+      <button class="btn btn-outline-success" type="submit" (click)="logInputValue(searchInput.value)">Search</button>
+    </form>
+    <span></span>
+  </div>
+</nav>
+
+<div class="body" *ngIf="vehicleList.length == 0">
+  <div class="content">
+    <p>Please enter pick-up location to get available vehicle list,</p>
+    <p>to Unsubscribe plan, <a style="cursor: pointer;color: blue;" [routerLink]="['/cancel-subscription']">click
+        here</a>.</p>
+  </div>
+</div>
+<h1 *ngIf="vehicleList.length == 0" style="  background: linear-gradient(-40deg,  #5977e6, #f5ac02);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+font-size: 130px;
+font-weight: bold;
+text-align: left;
+line-height: 1.2;
+margin-left: 8%;
+max-width: 40%;">Welcome Cab Service</h1>
+<!-- <app-placeholder *ngIf="vehicleList.length == 0"></app-placeholder> -->
+
+<br>
+<div *ngIf="vehicleList.length !== 0">
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Pickup Location</th>
+        <th scope="col">Pickup Points</th>
+        <th scope="col">Start Time</th>
+        <th scope="col">Return Time</th>
+        <th scope="col">Vehicle No</th>
+        <th scope="col">Vehicle Type</th>
+        <th scope="col">Driver Phone Number</th>
+        <th scope="col">Maximum Capacity</th>
+        <th scope="col">Current Capacity</th>
+        <th scope="col">Monthly Fare</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of vehicleList">
+        <th scope="row">{{item.id}}</th>
+        <td>{{item.pickupLocation}}</td>
+        <td>{{item.onRoutePickupPoints}}</td>
+        <td>{{item.startTime}}</td>
+        <td>{{item.returnTime}}</td>
+        <td>{{item.vehicleNo}}</td>
+        <td>{{item.vehicleType}}</td>
+        <td>{{item.driverPhoneNumber}}</td>
+        <td>{{item.maximumCapacity}}</td>
+        <td>{{item.currentCapacity}}</td>
+        <td>{{item.monthlyFare}}</td>
+        <td><button class="btn btn-outline-success btn-sm" (click)="subscribe(item)">Subscriibe</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
