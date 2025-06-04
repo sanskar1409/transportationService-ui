@@ -9,6 +9,8 @@ import { CancelSubscriptionComponent } from './cancel-subscription/cancel-subscr
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from './navbar/navbar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -16,9 +18,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     SearchTransportationComponent,
     SubscribeTransportationComponent,
     CancelSubscriptionComponent,
+    NavbarComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,    
     AppRoutingModule,
     FormsModule,
     HttpClientModule,

@@ -1,47 +1,53 @@
-<nav class="navbar" style="background-color: #e3f2fd;">
-  <div class="container-fluid">
-    <a class="navbar-brand">My Subscription List</a>
-    <form class="d-flex" style="margin-left: -11.5%;" role="search">
-      <input class="form-control me-2" #searchInput type="search" placeholder="Enter subscription Id"
-        aria-label="Search">
-      <button class="btn btn-outline-success" type="submit"
-        (click)="getSubscriptionList(searchInput.value)">Search</button>
-    </form>
-    <button class="btn btn-outline-success d-flex" [routerLink]="['/']">Home</button>
-  </div>
-</nav>
-
+<!-- Message Section -->
+<h1  style="  background: linear-gradient(-40deg,  #ff0000, #000048);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+font-size: 50px;
+text-align: center;
+line-height: 1.2;
+margin-left: 8%;
+max-width: 40%;">One Cognizant Transport Service</h1>
 <div class="body" *ngIf="!subscriptions">
-  <div class="content">
-    <p>Please enter subscription Id to get available subscriptions list,</p>
-    <p>to subscribe new plan, <a style="cursor: pointer;color: blue;" [routerLink]="['/']">click
-        here</a>.</p>
+  <div class="content bg-light bg-opacity-75 shadow-sm">
+    <p class="fw-semibold">Please enter a subscription ID to find your subscription details.<br></p>
+    <form class="d-flex mx-auto" role="search" (submit)="getSubscriptionList(searchInput.value); $event.preventDefault();">
+      <input class="form-control me-2" #searchInput type="search" placeholder="Enter Subscription ID" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    <p>To subscribe to a new plan<br> <a class="text-primary text-decoration-none" [routerLink]="['/']">Click Here</a></p>
   </div>
 </div>
 
-
-<div *ngIf="subscriptions">
-  <table class="table table-hover table-bordered">
-    <thead>
-      <tr>
-        <th scope="col">Subscription ID</th>
-        <th scope="col">Employee ID</th>
-        <th scope="col">Start Date</th>
-        <th scope="col">End Date</th>
-        <th scope="col">Status</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">{{subscriptions?.id}}</th>
-        <td>{{subscriptions?.subscribedByEmployee}}</td>
-        <td>{{subscriptions?.subscriptionStartDate}}</td>
-        <td>{{subscriptions?.subscriptionEndDate}}</td>
-        <td>{{subscriptions?.subscriptionStatus}}</td>
-        <td><button class="btn btn-outline-danger btn-sm" (click)="cancelSubscription(subscriptions.id)"
-            [disabled]="subscriptions?.subscriptionStatus == 'Cancelled'">Unsubscriibe</button></td>
-      </tr>
-    </tbody>
-  </table>
+<!-- Subscription Table -->
+<div class="container mt-4" *ngIf="subscriptions">
+  <div class="table-responsive">
+    <table class="table table-hover table-bordered align-middle shadow-sm">
+      <thead class="table-dark">
+        <tr>
+          <th>Subscription ID</th>
+          <th>Employee ID</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ subscriptions?.id }}</td>
+          <td>{{ subscriptions?.subscribedByEmployee }}</td>
+          <td>{{ subscriptions?.subscriptionStartDate }}</td>
+          <td>{{ subscriptions?.subscriptionEndDate }}</td>
+          <td>{{ subscriptions?.subscriptionStatus }}</td>
+          <td>
+            <button class="btn btn-outline-danger btn-sm"
+                    (click)="cancelSubscription(subscriptions.id)"
+                    [disabled]="subscriptions?.subscriptionStatus === 'Cancelled'">
+              Unsubscribe
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
