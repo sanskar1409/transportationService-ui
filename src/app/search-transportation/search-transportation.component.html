@@ -1,14 +1,7 @@
-<h1 *ngIf="vehicleList.length == 0" style="  background: linear-gradient(-40deg,  #ff0000, #000048);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-font-size: 50px;
-text-align: center;
-line-height: 1.2;
-margin-left: 8%;
-max-width: 40%;">One Cognizant Transport Service</h1>
+<h1>Transport Service</h1>
 <div class="body" *ngIf="vehicleList.length == 0">
   <div class="content">
-    <p><b>Please enter pick-up location to get available vehicle list</b></p>
+    <p>Please enter pick-up location to get available vehicle list</p>
     <form class="d-flex" style="margin-left: 0%;" role="search">
       <input class="form-control me-2" #searchInput type="search" placeholder="Enter pick-up location"
         aria-label="Search">
@@ -16,11 +9,11 @@ max-width: 40%;">One Cognizant Transport Service</h1>
       <button class="btn btn-outline-success" type="submit" (click)="logInputValue(searchInput.value)">Search</button>
     </form>
     <br><br>
-    <p><b>To Unsubscribe to a plan</b> <a style="cursor: pointer;color: rgb(0, 0, 0);" [routerLink]="['/cancel-subscription']"><br>Unsubscribe</a></p>
+    <p>To Unsubscribe to a plan <a style="cursor: pointer;color: rgb(0, 0, 0);" [routerLink]="['/cancel-subscription']"><br>Unsubscribe</a></p>
   </div>
 </div>
 
-<!-- <app-placeholder *ngIf="vehicleList.length == 0"></app-placeholder> -->
+
 
 <br>
 <div *ngIf="vehicleList.length !== 0">

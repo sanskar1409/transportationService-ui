@@ -1,6 +1,6 @@
 styles.css
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     margin: 20px;        
     background-image: url('/assets/img/cab.jpg');
     background-repeat: no-repeat;
